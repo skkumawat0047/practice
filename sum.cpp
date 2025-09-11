@@ -1,7 +1,8 @@
 #include<iostream>
 using namespace std;
 int main(){
-    int a =3;
-    int b=3;
-    cout<<a+b<<endl;
+    int n;
+    cout<<"enter  a number :"<<endl;
+    cin>>n;
+    cout<<"the numebr entered by the user is: "<<n<<endl;
 }
