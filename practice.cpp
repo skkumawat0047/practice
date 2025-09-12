@@ -1,29 +1,44 @@
 #include<iostream>
-#include<vector>
+#include<string>
 using namespace std;
-int pivit(vector<int>&arr, int st, int end){
-    int idx=st-1, pivot = arr[end];
-    for(int i=st; i<end; i++){
-        if(arr[i]<pivot){
-            i++;
-            swap(arr[i], arr[idx]);
+void Alice(string &s){
+    int count=0;
+    for(char c:s){
+        if(c=='a' || c=='e' ||c=='i' ||c=='o' || c=='u'){
+            count++;
+        }
+        cout<<s<<count<<endl;
+        s.erase(0,1);
+        cout<<s<<endl;
+        if(count==3) return;
+    }
+}
+void bob(string &s){
+    for(char c:s){
+        if(c=='a' || c=='e' ||c=='i' ||c=='o' || c=='u') {
+            return;
+        }
+        s.erase(0,1);
+    }
+}
+bool doesAliceWin(string &s) {
+    bool alice = true;
+    while(s.length()!=0){
+        if(alice==true){
+            Alice(s);
+            cout<<s.length()<<"  "<<s<<endl;
+            alice=false;
+        }
+        else {
+            bob(s);
+            alice=true;
+            cout<<s.length()<<"  "<<s<<endl;
         }
     }
-    idx++;
-    swap(arr[idx], arr[end]);
-    return idx;
+    cout<<alice<<endl;
+    return alice;
 }
-void quicksort(vector<int>&arr, int st, int end){
-    if(st<end){
-        int pivitidx = pivit(arr, st, end);
-        quicksort(arr, st, pivitidx-1);
-        quicksort(arr, pivitidx+1, end);
-    }
-}
-int main(){;
-    vector<int>arr = {1,3,5,4,2,6,7};
-    quicksort(arr, 0, arr.size()-1);
-    for(int i:arr){
-        cout<<i<<"  ";
-    }
+int main(){
+    string s= "leetcoder";
+    cout<<doesAliceWin(s);
 }
