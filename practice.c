@@ -1,19 +1,18 @@
 #include<stdio.h>
-void swapr(int *a, int *b){
+void swap(int *a, int *b){
     int temp = *a;
     *a=*b;
     *b=temp;
 }
 int pivit(int arr[], int st, int end){
-    int idx=st-1, pivot=arr[end];
-    for(int i=st; i<end; i++){
+    int idx=st, pivot=arr[st];
+    for(int i=st+1; i<=end; i++){
         if(arr[i]<pivot){
             idx++;
-            swapr(&arr[i], &arr[idx]);
+            swap(&arr[i], &arr[idx]);
         }
     }
-    idx++;
-    swapr(&arr[idx],&arr[end]);
+    swap(&arr[idx],&arr[st]);
     return idx;
 }
 void quicksort(int arr[], int st, int end){
