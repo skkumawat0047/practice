@@ -1,34 +1,29 @@
 #include<stdio.h>
 #include<stdlib.h>
-struct Node{
+typedef struct Node
+{
     int data;
-    struct Node* next;
-};
+    struct Node*next;
+}Node;
 
 int main(){
-    struct Node* head=(struct Node*)malloc(sizeof(struct Node));
-    struct Node* head2=(struct Node*)malloc(sizeof(struct Node));
-    struct Node* head3=(struct Node*)malloc(sizeof(struct Node));
-    struct Node* head4=(struct Node*)malloc(sizeof(struct Node));
-    head->data=9;
-    head2->data=12;
-    head3->data=18;
-    head4->data=13;
-    head->next=head2;
-    head2->next=head3;
-    head3->next=head4;
-    head4->next=NULL;
-    struct Node* newnode=(struct Node*)malloc(sizeof(struct Node));
-    struct Node* temp=(struct Node*)malloc(sizeof(struct Node));
-    // struct Node* next=temp->next;
-    temp->data= 7;
-    temp->next = head3;
-    head2->next = temp;
-    temp=head;
+    Node* l1, *l2, *l3;
+    l1=(Node*)malloc(sizeof(Node));
+    l2=(Node*)malloc(sizeof(Node));
+    l3=(Node*)malloc(sizeof(Node));
+    l1->data=23;
+    l2->data=53;
+    l3->data=86;
+    l1->next=l2;
+    l2->next=l3;
+    l3->next=NULL;
+    Node* temp=l1;
+
     while (temp!=NULL)
     {
         printf("%d->",temp->data);
         temp=temp->next;
     }
-    printf("NULL\n");
+    return 0;
+    
 }
